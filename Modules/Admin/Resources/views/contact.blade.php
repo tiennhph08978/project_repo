@@ -19,64 +19,33 @@
                                     <th>#</th>
                                     <th>First name</th>
                                     <th>Last name</th>
+                                    <th>Phone</th>
                                     <th>Content</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>Product_cate</td>
-                                    <td>Product_cate</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-outline-primary">Status</a>
-                                        <a href="" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>Product_cate</td>
-                                    <td>Product_cate</td>
-                                    <td>
-                                        <span class="status--denied">Denied</span>
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-outline-primary">Status</a>
-                                        <a href="" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>Product_cate</td>
-                                    <td>Product_cate</td>
-                                    <td>
-                                        <span class="status--denied">Denied</span>
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-outline-primary">Status</a>
-                                        <a href="" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>Product_cate</td>
-                                    <td>Product_cate</td>
-                                    <td>
-                                        <span class="status--denied">Denied</span>
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-outline-primary">Status</a>
-                                        <a href="" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
+                                @foreach ($data as $key => $contact)
+                                    <tr>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                                        <td>{{ $contact->email }}</td>
+                                        <td>{{ $contact->phone }}</td>
+                                        <td>{{ $contact->content }}</td>
+                                        <td>
+                                            @if ($contact->status == 1)
+                                                <span class="status--denied">Denied</span>
+                                            @else
+                                                <span class="status--process">Processed</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-outline-primary">Status</a>
+                                            <a href="" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

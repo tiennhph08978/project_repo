@@ -22,6 +22,7 @@ class ProductServiceImpl implements ProductService
 
     public function store(ProductRequest $request): Product
     {
+        // dd($request->input('categories'));
         if ($request->has('image'))
         {
             $filePath = $request['image']->storeAs('uploads', request('image')->getClientOriginalName(), 'public');
@@ -32,7 +33,12 @@ class ProductServiceImpl implements ProductService
         $product->price = $request->get('price');
         $product->image = $filePath;
 
-        return $this->productRepository->save($product);
+        $this->productRepository->save($product);
+
+        $product->categories()->attach($request->input('categories'));
+
+        dd($product);
+        die();
         // TODO: Implement store() method.
     }
 

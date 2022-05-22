@@ -23,4 +23,9 @@ class Product extends Model
     protected $table = "products";
 
     use HasFactory;
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_category', 'product_id', 'category_id');
+    }
 }

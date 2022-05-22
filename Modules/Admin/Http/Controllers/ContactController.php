@@ -5,16 +5,23 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-
+ use Modules\Admin\Contracts\Services\ContactService;
 class ContactController extends Controller
 {
+    private $contactService;
+
+    public function __construct(ContactService $contactService)
+    {
+        $this->contactService = $contactService;
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index(): Renderable
     {
-        return view('admin::contact');
+        $data = $this->contactService->getDataContact();
+        return view('admin::contact', compact('data'));
     }
 
     /**

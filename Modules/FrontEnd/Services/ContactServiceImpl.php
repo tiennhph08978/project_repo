@@ -4,8 +4,10 @@ namespace Modules\FrontEnd\Services;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Modules\FrontEnd\Contracts\Repositories\Mysql\ContactRepository;
 use Modules\FrontEnd\Contracts\Services\ContactService;
+use Illuminate\Support\Facades\Mail;
 
 class ContactServiceImpl  implements ContactService
 {
@@ -23,6 +25,11 @@ class ContactServiceImpl  implements ContactService
         $contact->email = $request->get('email');
         $contact->phone = $request->get('phone');
         $contact->content = $request->get('content');
+        $data = $contact->toArray();
+        // dd($data['email']);
+        Mail::send('frontend::email', $data, function ($message) use ($data){
+            $message->to('nguyenhuutien2k@gmail.com')->subject($data['first_name']);
+        });
         return $this->contactRepository->storeContact($contact);
         // TODO: Implement sendMail() method.
     }

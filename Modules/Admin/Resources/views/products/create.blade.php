@@ -49,6 +49,15 @@
                                         <input type="file" id="image" name="image" class="form-control">
                                     </div>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="select2Multiple">Multiple Tags</label>
+                                    <select class="select2-multiple form-control" name="categories[]" multiple="multiple"
+                                      id="select2Multiple">
+                                      <option value="1">tag1</option>
+                                      <option value="2">tag2</option>
+                                      <option value="3">tag3</option>               
+                                    </select>
+                                  </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary btn-sm">
@@ -66,4 +75,19 @@
         </div>
     </div>
 </div>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+       
+<script>
+  $(document).ready(function() {
+      // Select2 Multiple
+      $('.select2-multiple').select2({
+          placeholder: "Select",
+          allowClear: true
+      });
+
+  });
+
+</script>
 @endsection
