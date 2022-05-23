@@ -53,9 +53,9 @@
                                     <label for="select2Multiple">Multiple Tags</label>
                                     <select class="select2-multiple form-control" name="categories[]" multiple="multiple"
                                       id="select2Multiple">
-                                      <option value="1">tag1</option>
-                                      <option value="2">tag2</option>
-                                      <option value="3">tag3</option>               
+                                      @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>   
+                                      @endforeach
                                     </select>
                                   </div>
                             </div>

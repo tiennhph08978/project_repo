@@ -50,5 +50,5 @@ interface ProductRepository
 
     public function delete(Product $product): Void;
 
-
+    public function getCategory();
 }

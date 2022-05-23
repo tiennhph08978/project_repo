@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\FrontEnd\Http\Controllers\AboutController;
 use Modules\FrontEnd\Http\Controllers\ContactController;
 use Modules\FrontEnd\Http\Controllers\HomeController;
+use Modules\FrontEnd\Http\Controllers\LoginController;
 use Modules\FrontEnd\Http\Controllers\OrderController;
 use Modules\FrontEnd\Http\Controllers\ProjectController;
 
@@ -22,9 +23,8 @@ Route::prefix('frontend')->group(function() {
     Route::get('/', 'FrontEndController@index');
 });
 //login
-Route::get('login', function (){
-    return view('frontend::auth.login');
-})->name('login');
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login.post');
 Route::get('register', function (){
     return view('frontend::auth.register');
 })->name('register');

@@ -18,4 +18,6 @@ interface ProductService
     public function show(): Collection;
 
     public function update(ProductRequest $request, Product $product): RedirectResponse;
+
+    public function getCategory();
 }

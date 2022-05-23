@@ -36,9 +36,6 @@ class ProductServiceImpl implements ProductService
         $this->productRepository->save($product);
 
         $product->categories()->attach($request->input('categories'));
-
-        dd($product);
-        die();
         // TODO: Implement store() method.
     }
 
@@ -74,5 +71,10 @@ class ProductServiceImpl implements ProductService
         return redirect()->route('products.index');
 
         // TODO: Implement update() method.
+    }
+
+    public function getCategory()
+    {
+        return $this->productRepository->getCategory();
     }
 }

@@ -34,7 +34,8 @@ class ProductController extends Controller
      */
     public function create(): Renderable
     {
-        return view('admin::products.create');
+        $categories = $this->productService->getCategory();
+        return view('admin::products.create', compact('categories'));
     }
 
     /**
